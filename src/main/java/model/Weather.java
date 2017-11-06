@@ -8,7 +8,7 @@ public class Weather {
     private DirectionEnum direction; //风向
     private String airQuality; //空气质量
     private String cloudState; //多云或下雨
-    private String temp; //温度
+    private int temp; //温度
 
     public String getNo() {
         return No;
@@ -50,11 +50,11 @@ public class Weather {
         this.cloudState = cloudState;
     }
 
-    public String getTemp() {
+    public int getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(int temp) {
         this.temp = temp;
     }
 
