@@ -1,9 +1,12 @@
 package util;
 
+import model.DirectionEnum;
 import model.ErrorException;
 import model.ReturnExceptionEnum;
 
 import java.sql.*;
+import java.util.Date;
+import java.util.HashMap;
 
 
 public class MysqlUtil {
@@ -16,9 +19,9 @@ public class MysqlUtil {
     static final String USER = "root";
     static final String PASS = "";
 
-    public static void insertOrUpdateOrdelete(String sql) {
+    public static void insertOrUpdateOrdelete(String sql, HashMap hashMap) {
         Connection conn = null;
-        Statement stmt = null;
+        PreparedStatement stmt = null;
         try{
             // 注册 JDBC 驱动
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +32,13 @@ public class MysqlUtil {
 
             // 执行查询
             System.out.println(" 实例化Statement对...");
-            stmt = conn.createStatement();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,(String)hashMap.get("No"));
+            stmt.setString(2, (String) hashMap.get("date"));
+            stmt.setString(3, (String)hashMap.get("direction"));
+            stmt.setString(4,(String)hashMap.get("airQuality"));
+            stmt.setString(5,(String)hashMap.get("cloudState"));
+            stmt.setInt(6,(Integer) hashMap.get("temp"));
             int i= stmt.executeUpdate(sql);
             if(i>0){
                 System.out.println("更新成功");
