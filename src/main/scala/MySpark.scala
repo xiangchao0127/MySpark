@@ -20,6 +20,6 @@ object MySpark {
       print(arg+" ")
     println()
     println("math is work")
-    
+
   }
 }
