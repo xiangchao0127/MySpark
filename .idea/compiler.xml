@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MySpark" />
+        <module name="MySparkLocal" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MySpark" target="1.5" />
+      <module name="MySparkLocal" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
