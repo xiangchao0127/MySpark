@@ -3,6 +3,7 @@ package util;
 import model.DirectionEnum;
 import model.ErrorException;
 import model.ReturnExceptionEnum;
+import model.Weather;
 
 import java.sql.*;
 import java.util.Date;
@@ -19,7 +20,7 @@ public class MysqlUtil {
     static final String USER = "root";
     static final String PASS = "";
 
-    public static void insertOrUpdateOrdelete(String sql, HashMap hashMap) {
+    public static void insertOrUpdateOrdelete(String sql, Weather weather) {
         Connection conn = null;
         PreparedStatement stmt = null;
         try{
@@ -33,13 +34,13 @@ public class MysqlUtil {
             // 执行查询
             System.out.println(" 实例化Statement对...");
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1,(String)hashMap.get("No"));
-            stmt.setString(2, (String) hashMap.get("date"));
-            stmt.setString(3, (String)hashMap.get("direction"));
-            stmt.setString(4,(String)hashMap.get("airQuality"));
-            stmt.setString(5,(String)hashMap.get("cloudState"));
-            stmt.setInt(6,(Integer) hashMap.get("temp"));
-            int i= stmt.executeUpdate(sql);
+            stmt.setString(1,weather.getNo());
+            stmt.setString(2, DateUtil.date2Str(weather.getDate()));
+            stmt.setString(3, weather.getDirection().getName());
+            stmt.setString(4,weather.getAirQuality());
+            stmt.setString(5,weather.getCloudState());
+            stmt.setInt(6,weather.getTemp());
+            int i= stmt.executeUpdate();
             if(i>0){
                 System.out.println("更新成功");
             }else {

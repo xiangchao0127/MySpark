@@ -1,9 +1,11 @@
 package service;
 
+import model.Weather;
+
 import java.util.HashMap;
 
 public interface IWeather {
-    void addData(HashMap hashMap);
+    void addData(Weather weather);
 
-    HashMap generatorData();
+    Weather generatorData();
 }

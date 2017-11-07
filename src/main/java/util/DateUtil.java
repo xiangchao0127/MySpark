@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-    private static final String FORMAT = "yyyy-MM-dd";
+    private static final String FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static Date str2Date(String str){
         Date date = null;
         try {

@@ -40,8 +40,15 @@ public enum DirectionEnum {
         for(DirectionEnum directionEnum:DirectionEnum.values()){
             if(directionEnum.getCode().equals(code)){
                 return directionEnum.getName();
-            }else {
-                throw new ErrorException(ReturnExceptionEnum.User_Define_Exception);
+            }
+        }
+        return null;
+    }
+
+    public static DirectionEnum getEnumByCode(String code){
+        for(DirectionEnum directionEnum:DirectionEnum.values()){
+            if(directionEnum.getCode().equals(code)){
+                return directionEnum;
             }
         }
         return null;
