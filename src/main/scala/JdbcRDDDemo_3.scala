@@ -32,20 +32,32 @@ object JdbcRDDDemo_3 {
         (no,cloud_time,direction,airQuality,cloudState,temp)
       }
     )
-    val jdbcRDDC = jdbcRDD.collect()
-    var i = 0
-    jdbcRDDC.map(line =>{
-      println("no:"+line._1)
-      println("cloud_time:"+line._2)
-      println("direction:"+line._3)
-      println("airQuality:"+line._4)
-      println("cloudState:"+line._5)
-      println("temp:"+line._6)
-      println("------------------------------")
-      i=i+1
+
+    jdbcRDD.foreach(r=>{
+      if(r._3=="东"){
+        println(r._1)
+      }
     })
-    println("总共 "+i+ "条")
-    sc.stop
-    println("耗时"+(System.currentTimeMillis()-start) +"毫秒")
-  }
-}
+    jdbcRDD.foreachPartition(r=>{
+      r.foreach(r=>{
+        println(r)
+      })
+    })
+
+//    val jdbcRDDC = jdbcRDD.collect()
+//    var i = 0
+//    jdbcRDDC.map(line =>{
+//      println("no:"+line._1)
+//      println("cloud_time:"+line._2)
+//      println("direction:"+line._3)
+//      println("airQuality:"+line._4)
+//      println("cloudState:"+line._5)
+//      println("temp:"+line._6)
+//      println("------------------------------")
+//      i=i+1
+//    })
+//    println("总共 "+i+ "条")
+//    sc.stop
+//    println("耗时"+(System.currentTimeMillis()-start) +"毫秒")
+//  }
+}}
