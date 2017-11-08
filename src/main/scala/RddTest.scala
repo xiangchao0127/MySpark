@@ -11,7 +11,7 @@ object RddTest {
    val rdd = sc.makeRDD(List(1,2,3,4,5,6))
     rdd.foreach(println)
 
-    val rdd01 = sc.makeRDD(List(1,2,3,4,5,6))
+     val rdd01 = sc.makeRDD(List(1,2,3,4,5,6))
     val r01 = rdd01.map { x => x * x }
     println(r01.collect().mkString(","))
     /* Array */
@@ -45,7 +45,7 @@ object RddTest {
     println("======filter操作======")
     /* flatMap操作 */
     println("======flatMap操作======")
-    println(rddFile.flatMap { x => x.split(",") }.first())
+//    println(rddFile.flatMap { x => x.split(",") }.first())
     println("======flatMap操作======")
     /* distinct去重操作 */
     println("======distinct去重======")
